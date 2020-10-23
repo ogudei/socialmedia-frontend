@@ -55,7 +55,7 @@ export default {
           }
         })
         .then((response) => {
-          this.user = response.data.value
+          this.user = response.data.value.profile
         })
     },
     fetchUserTimeline () {

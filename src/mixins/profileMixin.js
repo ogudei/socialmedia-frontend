@@ -15,6 +15,7 @@ export default {
       if (username) {
         axios.get(`/${username}`).then(response => {
           this.user = response.data.value.profile
+          this.tweetsLength = response.data.value.posts.length
         })
       } else {
         const token = localStorage.getItem('user-token')
@@ -27,7 +28,7 @@ export default {
           })
           .then(response => {
             this.user = response.data.value.profile
-            this.tweetsCount = response.data.value.profile.posts.length
+            this.tweetsLength = response.data.value.posts.length
           })
       }
     },
@@ -39,8 +40,8 @@ export default {
           }
         })
         .then(response => {
-          this.authUser = response.data.value.profile.information
-          this.tweetsCount = response.data.value.profile.posts.length
+          this.authUser = response.data.value.profile
+          this.tweetsLength = response.data.value.posts.length
         })
     }
   }

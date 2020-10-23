@@ -61,9 +61,15 @@ export default {
           }
         )
         .then(response => {
-          this.usersToFollow = this.usersToFollow.filter(u => {
-            return u.id !== userId
-          })
+          if (response.data.isValid === 1) {
+            this.usersToFollow = this.usersToFollow.filter(u => {
+              return u.id !== userId
+            })
+            let index = this.usersToFollow.findIndex(user => user._id === userId)
+            this.usersToFollow.splice(index, 1)
+          } else {
+            console.log(response.data.notification)
+          }
         })
     }
   }

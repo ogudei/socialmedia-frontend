@@ -13,7 +13,7 @@
             <div class="content">
               <router-link :to="`/${user._id}`">
                 <div class="header">Tweets</div>
-                <strong>{{ tweetLength || 0 }}</strong>
+                <strong>{{ tweetsLength || 0 }}</strong>
               </router-link>
             </div>
           </div>
@@ -55,7 +55,7 @@ export default {
       type: Object,
       required: true
     },
-    tweetLength: {
+    tweetsLength: {
       type: Number,
       required: true
     }
@@ -69,7 +69,8 @@ export default {
     }
   },
   created () {
-    console.log('w')
+    console.log(this.authUser)
+    console.log(this.user)
   },
   methods: {
     follow (userId) {

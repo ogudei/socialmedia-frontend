@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UserProfileHeader :user="user" :auth-user="authUser" :tweet-length="tweets.length" />
+    <UserProfileHeader :user="user" :auth-user="authUser" :tweets-length="tweets.length" />
     <div class="ui stackable grid container">
       <div class="four wide column">
         <UserProfileSidebarDetails :user="user" />
@@ -9,7 +9,7 @@
         <div class="ui segment">
           <h2 class="ui medium dividing header">Tweets</h2>
 
-          <Tweets :tweets.sync="tweets" :auth-user="authUser" />
+          <Tweets :tweets.sync="tweets" :auth-user="authUser" :isOwner="true" />
         </div>
       </div>
       <div class="four wide column">
@@ -66,7 +66,7 @@ export default {
           'UserAuth': token
         }
       }).then((response) => {
-        this.user = response.data.value.profile.information
+        this.user = response.data.value.profile
         this.tweets = response.data.value.posts
       })
     },
@@ -78,8 +78,8 @@ export default {
           }
         })
         .then((response) => {
-          this.authUser = response.data.value.profile.information
-          this.user = response.data.value.profile.information
+          this.authUser = response.data.value.profile
+          this.user = response.data.value.profile
         })
     }
   }

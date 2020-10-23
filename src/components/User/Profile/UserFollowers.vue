@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UserProfileHeader :user="user" :auth-user="authUser" :tweet-length="tweetsCount" />
+    <UserProfileHeader :user="user" :auth-user="authUser" :tweets-length="tweetsLength" />
     <div class="ui stackable grid container">
       <div class="four wide column">
         <UserProfileSidebarDetails :user="user" />
@@ -12,6 +12,7 @@
               v-for="follower in user.followers"
               :key="follower._id"
               :user="follower"
+              :type="'followers'"
             />
           </div>
         </div>
@@ -37,8 +38,16 @@ export default {
   data () {
     return {
       user: {},
-      authUser: {}
+      authUser: {},
+      tweetsLength: 0
+      // isFollowing: this.authUser.following.filter(x => this.authUser.followers.filter(y => y._id === x._id).length)
+    }
+  },
+  methods: {
+    userFollowed (payload) {
+      this.isFollowing = 1
     }
   }
 }
+
 </script>

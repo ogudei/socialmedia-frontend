@@ -34,6 +34,15 @@ export default new Router({
       props: true
     },
     {
+      path: '/followers',
+      component: UserFollowers
+    },
+    // {
+    //   path: '/:username/followers',
+    //   component: UserFollowers,
+    //   props: true
+    // }
+    {
       path: '/settings/profile',
       component: UserProfileSettings
     },
@@ -53,15 +62,6 @@ export default new Router({
     {
       path: '/:username',
       component: UserProfile,
-      props: true
-    },
-    {
-      path: '/followers',
-      component: UserFollowers
-    },
-    {
-      path: '/:username/followers',
-      component: UserFollowers,
       props: true
     }
   ]
